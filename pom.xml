@@ -129,8 +129,6 @@
 				    <webXml>src\main\webapp\WEB-INF\web.xml</webXml>        
 				  </configuration>
 			</plugin>
-			 <plugins>
-                    </plugins>
 		</plugins>
 	</build>
 
