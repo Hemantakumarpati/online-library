@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/fragments/navbar :: header"/>
+    <title>Update user</title>
+</head>
+
+<body>
+
+<div class="container">
+    <div th:replace="/fragments/navbar :: navbar"/>
+
+    <hr>
+
+    <p class="h4 mb-4">User update form</p>
+
+    <form action="#" th:action="@{/users/update}"
+          th:object="${userEditDto}" method="post">
+
+        <input type="text" th:field="*{name}"
+               class="form-control mb-4 col-4" placeholder="Full name">
+        <p th:if="${#fields.hasErrors('name')}" class="alert alert-danger" th:errors="*{name}"></p>
+
+        <!-- hidden field = email -->
+        <input type="hidden" th:field="*{email}"/>
+
+        <input type="text" th:field="*{password}"
+               class="form-control mb-4 col-4" placeholder="Password">
+        <p th:if="${#fields.hasErrors('password')}" class="alert alert-danger" th:errors="*{password}"></p>
+
+        <input type="text" th:field="*{address.streetName}"
+               class="form-control mb-4 col-4" placeholder="Street name">
+
+        <p>Street Number: </p>
+        <input type="text" th:field="*{address.streetNumber}"
+               class="form-control mb-4 col-4" placeholder="Street number">
+
+        <input type="text" th:field="*{address.city}"
+               class="form-control mb-4 col-4" placeholder="City">
+
+        <input type="text" th:field="*{address.country}"
+               class="form-control mb-4 col-4" placeholder="Country">
+
+        <p>Zip Code: </p>
+        <input type="number" th:field="*{address.zipCode}"
+               class="form-control mb-4 col-4" placeholder="Zip code">
+
+        <button type="submit" class="btn btn-info col-2">Update</button>
+
+    </form>
+
+    <hr>
+
+</div>
+</body>
+
+</html>
+
+
+
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/fragments/navbar :: header"/>
+    <title>Library Users List</title>
+</head>
+
+<body>
+<div class="container">
+    <div th:replace="/fragments/navbar :: navbar"/>
+<H3>Users List</H3>
+<hr>
+
+    <a th:href="@{/users/showFormForAdd}"
+    class="btn btn-primary btn-sm mb-3">
+        Add user
+    </a>
+
+<table class="table table-border table-striped">
+    <thead class ="thead-dark">
+    <tr>
+        <th> Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Address</th>
+        <th>Modify user</th>
+    </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="editUser : ${users}">
+
+                <td th:text="${editUser.name}" />
+                <td th:text="${editUser.email}" />
+                <td th:text="${editUser.password}" />
+                <td th:text="${editUser.address}"/>
+
+                <!-- updating button -->
+                <td>
+                    <a th:href="@{/users/showUpdateForm(email=${editUser.email})}"
+                       class="btn btn-info btn-sm">
+                        Update
+                    </a>
+
+                    <!--inactivate LibraryUser account button -->
+                    <a th:href="@{/users/inactivate(email=${editUser.email})}"
+                       class="btn btn-warning btn-sm"
+                    onclick="if(!(confirm('Are you sure?'))) return false">
+                        Inactivate account
+                    </a>
+
+                </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
